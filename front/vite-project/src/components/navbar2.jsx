@@ -9,7 +9,7 @@ export default function Navbar2() {
       elevation={0} // Supprime l'ombre pour un effet plus léger
       sx={{
         width: "100%", // S'étend sur toute la largeur
-        top: 80, // Ajuste la position pour laisser un espace suffisant sous la navbar principale
+        top: 100, // Ajuste la position pour laisser un espace suffisant sous la navbar principale
         left: 0, // Pas d'espace à gauche
         margin: 0, // Supprime les marges
         padding: 0, // Supprime les paddings

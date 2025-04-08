@@ -15,24 +15,24 @@ export default function VieQuotidienne() {
           overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           padding: 2,
           justifyContent: "center",
-          textAlign: "center", 
+          textAlign: "center",
           paddingBottom: "100px", // Compense la hauteur du footer
           paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
         }}
       >
-        
 
-        <Typography variant="h5" gutterBottom sx={{ marginTop: 4 , textAlign: "center"}}>
+        <Typography variant="h5" gutterBottom sx={{ marginTop: "100px", textAlign: "center" }}>
           Suivez-nous sur les réseaux sociaux
         </Typography>
 
+        <InstagramEmbed
+          url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
+          width={500} // Largeur de l'embed
+          height={400} // Hauteur de l'embed
+          textAlign="center" // Centrer le texte
+          style={{ margin: "0 auto" }} // Centrer l'embed
+        />
 
-          <InstagramEmbed
-            url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
-            width={500} // Largeur de l'embed
-            height={400} // Hauteur de l'embed
-          />
-          
       </Box>
       <Footer />
     </>

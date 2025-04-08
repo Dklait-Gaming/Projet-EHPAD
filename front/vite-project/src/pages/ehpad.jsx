@@ -13,24 +13,15 @@ export default function Ehpad() {
         sx={{
           padding: 2,
           textAlign: "center",
-          paddingTop: "180px", // Compense la hauteur combinée des deux barres de navigation
+          paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           paddingBottom: "100px", // Compense la hauteur du footer
+          height: "100vh", // Hauteur de la fenêtre
+          overflowY: "auto", // Ajoute un scroll vertical si nécessaire
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Page EHPAD
-        </Typography>
+        
         <Typography variant="body1" gutterBottom>
-          Présentation de l'EHPAD
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Affichage des tarifs
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Informations pratiques
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Horaires d'accueil
+          Présentation de l'EHPAD * Affichage des tarifs * Informations pratiques * Horaires d'accueil
         </Typography>
         <Map />
       </Box>

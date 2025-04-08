@@ -13,7 +13,8 @@ export default function HebergementTemporaire() {
           height: "100vh", // Hauteur de la fenêtre
           overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           padding: 2,
-          paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
+          textAlign: "center",
+          paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           paddingBottom: "100px", // Compense la hauteur du footer
         }}
       >

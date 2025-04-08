@@ -13,11 +13,15 @@ export default function TelechargerUnDocument() {
           height: "100vh", // Hauteur de la fenêtre
           overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           padding: 2,
-          paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
+          textAlign: "center",
+          paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           paddingBottom: "100px", // Compense la hauteur du footer
         }}
       >
-        <Accordion sx={{ marginTop: 2, width: "50%" }}>
+        <Typography variant="h5" gutterBottom>
+          Ici vous trouverez tout les documents disponibles à télécharger
+        </Typography>
+        <Accordion sx={{ marginTop: 2, width: "50%", alignItems: "center", marginLeft: "25%" }}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
             <Typography>Documents à télécharger</Typography>
           </AccordionSummary>
@@ -25,9 +29,6 @@ export default function TelechargerUnDocument() {
             <DownloadButton text="Document 1" link="/path/to/document1.pdf" />
           </AccordionDetails>
         </Accordion>
-        <Typography variant="h4" gutterBottom>
-          Page Télécharger un Document
-        </Typography>
       </Box>
       <Footer />
     </>

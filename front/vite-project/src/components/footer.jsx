@@ -40,7 +40,6 @@ export default function Footer() {
     height: 80,
     width: 120,
     margin: "0 10px",
-    transition: "transform 0.3s ease", // Animation au survol
   };
 
  
@@ -65,22 +64,17 @@ export default function Footer() {
           src="./src/images/BdH.jpg"
           style={logoStyle}
           alt="Logo principal"
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         />
         <img
           src="./src/images/ski.jpg"
           style={logoStyle}
           alt="Second logo"
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+
         />
         <img
           src="./src/images/ski.jpg"
           style={logoStyle}
           alt="Troisième logo"
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         />
 
         {/* Boutons et icônes */}

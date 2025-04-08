@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Box sx={{ padding: 2, textAlign: "center", paddingTop: "150px", paddingBottom: "100px" }}>
+      <Box sx={{ padding: 2, textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}>
 
       <TypeAnimation
       sequence={[
