@@ -39,10 +39,11 @@ export default function NavbarComponent() {
         boxShadow: "none",
       }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", padding: 0 }}>
+      <Toolbar sx={{ justifyContent: "space-between", padding: 0 , backgroundColor: "#d3d3d3"}}>
+        {/* Logo */}
         {/* Logo cliquable */}
         <Box sx={{ flexGrow: 1 }}>
-          <a href="/" style={{ textDecoration: "none" }}>
+          <a href="/">
             <img
               src=".\src\images\BdH.jpg"
               alt="Logo"

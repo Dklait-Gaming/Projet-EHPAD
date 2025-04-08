@@ -24,7 +24,7 @@ export default function Footer() {
   }, []);
 
   const footerStyle = {
-    backgroundColor: "whitesmoke",
+    backgroundColor: "#54f98d",
     textAlign: "center",
     padding: "10px 0",
     position: "fixed", // Fixe le footer
