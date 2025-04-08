@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Button, TextField, Alert, Box, Typography } from "@mui/material";
+import { Button, TextField, Alert, Box, Typography, Snackbar } from "@mui/material";
 
 const SecureMail = () => {
   const [showEmail, setShowEmail] = useState(false);
   const [quizAnswer, setQuizAnswer] = useState("");
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false); // État pour le Snackbar
+  const [snackbarMessage, setSnackbarMessage] = useState(""); // Message du Snackbar
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // Type du Snackbar
   const encryptedEmail = "Y29udGFjdEBkb21haW5lLmNvbQ==";
 
   const decryptEmail = (encrypted) => atob(encrypted);
@@ -14,10 +18,20 @@ const SecureMail = () => {
     if (quizAnswer.toLowerCase() === "blanc") {
       setShowEmail(true);
       setError(false);
-      alert("Bonne réponse !");
+      setSuccess(true);
+      setSnackbarMessage("Bonne réponse ! Vous pouvez maintenant voir l'e-mail.");
+      setSnackbarSeverity("success");
     } else {
       setError(true);
+      setSuccess(false);
+      setSnackbarMessage("Réponse incorrecte. Veuillez réessayer.");
+      setSnackbarSeverity("error");
     }
+    setSnackbarOpen(true); // Ouvrir le Snackbar
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false); // Fermer le Snackbar
   };
 
   return (
@@ -43,11 +57,6 @@ const SecureMail = () => {
               Vérifier
             </Button>
           </form>
-          {error && (
-            <Alert severity="error" sx={{ marginTop: 2 }}>
-              Réponse incorrecte. Veuillez réessayer.
-            </Alert>
-          )}
         </Box>
       ) : (
         <Typography variant="body1">
@@ -57,6 +66,18 @@ const SecureMail = () => {
           </a>
         </Typography>
       )}
+
+      {/* Snackbar pour afficher les messages */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: "100%" }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
