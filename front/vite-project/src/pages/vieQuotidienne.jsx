@@ -32,9 +32,6 @@ export default function VieQuotidienne() {
             width={500} // Largeur de l'embed
             height={400} // Hauteur de l'embed
           />
-
-        
-
           
       </Box>
       <Footer />
