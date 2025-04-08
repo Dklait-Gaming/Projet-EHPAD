@@ -22,9 +22,6 @@ export default function Home() {
       repeat={Infinity}
       wrapper="h1"
     />
-         
-  
-
         <CarouselImg />
       </Box>
       <Footer />

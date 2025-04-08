@@ -43,9 +43,11 @@ export default function Footer() {
     transition: "transform 0.3s ease", // Animation au survol
   };
 
+ 
   const iconStyle = {
     margin: "0 10px",
     color: "#333",
+    transition: "transform 0.3s ease", // Animation au survol
   };
 
   return (
@@ -67,14 +69,14 @@ export default function Footer() {
           onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         />
         <img
-          src="./src/images/4199849.jpg"
+          src="./src/images/ski.jpg"
           style={logoStyle}
           alt="Second logo"
           onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
           onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         />
         <img
-          src="./src/images/4199849.jpg"
+          src="./src/images/ski.jpg"
           style={logoStyle}
           alt="Troisième logo"
           onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
@@ -83,21 +85,37 @@ export default function Footer() {
 
         {/* Boutons et icônes */}
         <MuiLink href="/mentions-legales" underline="none">
-          <Button variant="outlined">Mentions légales</Button>
+          <Button variant="body2" sx={{color:'black'}}>Mentions légales</Button>
         </MuiLink>
+
         <MuiLink href="https://www.facebook.com/ehpad.argeles.gazost/" underline="none">
-          <FaFacebook size={30} style={iconStyle} />
+          <FaFacebook 
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          size={30} style={iconStyle} 
+          />
         </MuiLink>
+
         <MuiLink href="https://www.instagram.com/ehpadargelesgazost/" underline="none">
-          <FaInstagram size={30} style={iconStyle} />
+          <FaInstagram 
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          size={30} style={iconStyle} 
+          />
         </MuiLink>
+        
         <MuiLink href="https://fr.linkedin.com/company/ehpad-lbdh/" underline="none">
-          <FaLinkedin size={30} style={iconStyle} />
+          <FaLinkedin
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")} 
+          size={30} style={iconStyle} />
         </MuiLink>
+
         <MuiLink href="/nous-contacter" underline="none">
-          <Button variant="outlined">Nous contacter</Button>
+          <Button variant="body2" sx={{color:'black'}}>Nous contacter</Button>
         </MuiLink>
       </Box>
+      
       <Typography variant="body2" color="textSecondary">
         © 2025. EHPAD Les Balcons du Hautacam - Tous droits réservés
       </Typography>
