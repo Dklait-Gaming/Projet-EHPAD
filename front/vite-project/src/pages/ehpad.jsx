@@ -12,7 +12,8 @@ export default function Ehpad() {
       <Box
         sx={{
           padding: 2,
-          paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
+          textAlign: "center",
+          paddingTop: "180px", // Compense la hauteur combinée des deux barres de navigation
           paddingBottom: "100px", // Compense la hauteur du footer
         }}
       >

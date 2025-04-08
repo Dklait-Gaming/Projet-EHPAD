@@ -6,7 +6,7 @@ export default function CRT() {
   return (
     <>
       <Navbar />
-      <Box sx={{ padding: 2, textAlign: "center" }}>
+      <Box sx={{ padding: 2, textAlign: "center" , overflowY: "auto", height: "100vh" }}>
         <Typography variant="h4" gutterBottom>
           Page de CRT
         </Typography>

@@ -15,6 +15,11 @@ export default function Navbar2() {
         padding: 0, // Supprime les paddings
         zIndex: 1100, // Assure que la navbar secondaire reste au-dessus du contenu
         backdropFilter: "blur(10px)", // Ajoute un effet de flou pour un design moderne
+        borderRadius: "20px", // Arrondit les coins de la navbar
+        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Ajoute une légère ombre pour la profondeur
+        maxWidth: "50%", // S'assure que la navbar ne dépasse pas la largeur de l'écran
+        marginLeft: "auto", // Centre la navbar horizontalement
+        marginRight: "auto", // Centre la navbar horizontalement
         backgroundColor: "rgba(255, 255, 255, 0.8)", // Couleur blanche semi-transparente
       }}
     >

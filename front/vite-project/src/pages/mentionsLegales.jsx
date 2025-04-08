@@ -10,6 +10,10 @@ export default function MentionsLegales() {
         sx={{
           padding: 2,
           paddingBottom: "100px", // Compense la hauteur du footer
+          textAlign: "center",
+          paddingTop: "180px", // Compense la hauteur de la barre de navigation 
+          overflowY: "auto", // Permet le défilement vertical si le contenu déborde
+          height: "100vh", // Prend toute la hauteur de la fenêtre
         }}
       >
         <Typography variant="h4" gutterBottom>
