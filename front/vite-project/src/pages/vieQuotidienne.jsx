@@ -2,6 +2,7 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Navbar2 from "../components/navbar2";
 import { Box, Typography } from "@mui/material";
+import { InstagramEmbed, LinkedInEmbed } from "react-social-media-embed"; // Assurez-vous d'avoir installé react-facebook-embed
 
 export default function VieQuotidienne() {
   return (
@@ -13,15 +14,28 @@ export default function VieQuotidienne() {
           height: "100vh", // Hauteur de la fenêtre
           overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           padding: 2,
+          justifyContent: "center",
+          textAlign: "center", 
+          paddingBottom: "100px", // Compense la hauteur du footer
           paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Page Vie Quotidienne
+        
+
+        <Typography variant="h5" gutterBottom sx={{ marginTop: 4 , textAlign: "center"}}>
+          Suivez-nous sur les réseaux sociaux
         </Typography>
-        <Typography variant="body1">
-          Voici le contenu de la page Vie Quotidienne. Ajoutez ici les informations nécessaires.
-        </Typography>
+
+
+          <InstagramEmbed
+            url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
+            width={500} // Largeur de l'embed
+            height={400} // Hauteur de l'embed
+          />
+
+        
+
+          
       </Box>
       <Footer />
     </>
