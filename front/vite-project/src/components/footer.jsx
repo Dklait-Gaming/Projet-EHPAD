@@ -37,8 +37,8 @@ export default function Footer() {
   };
 
   const logoStyle = {
-    height: 100,
-    width: 150,
+    height: 80,
+    width: 120,
     margin: "0 10px",
     transition: "transform 0.3s ease", // Animation au survol
   };
@@ -115,7 +115,7 @@ export default function Footer() {
           <Button variant="body2" sx={{color:'black'}}>Nous contacter</Button>
         </MuiLink>
       </Box>
-      
+
       <Typography variant="body2" color="textSecondary">
         © 2025. EHPAD Les Balcons du Hautacam - Tous droits réservés
       </Typography>

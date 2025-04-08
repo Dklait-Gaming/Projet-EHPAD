@@ -5,9 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  "https://image.noelshack.com/fichiers/2025/14/2/1743513401-pexels-vivika-stamolis-2150389923-31112548.jpg",
-  "https://image.noelshack.com/fichiers/2025/14/2/1743513401-pexels-vivika-stamolis-2150389923-31112548.jpg",
-  "https://image.noelshack.com/fichiers/2025/14/2/1743513401-pexels-vivika-stamolis-2150389923-31112548.jpg",
+  "./src/images/ski.jpg",
+  "./src/images/ski.jpg",
+  "./src/images/ski.jpg",
 ];
 
 export default function CarouselImg() {
