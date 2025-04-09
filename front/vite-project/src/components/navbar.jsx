@@ -39,7 +39,7 @@ export default function NavbarComponent() {
         boxShadow: "none",
       }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", padding: 0 , backgroundColor: "#d3d3d3"}}>
+      <Toolbar sx={{ justifyContent: "space-between", padding: 0 , backgroundColor: "#ededed"}}>
         {/* Logo */}
         {/* Logo cliquable */}
         <Box sx={{ flexGrow: 1 }}>
@@ -58,9 +58,8 @@ export default function NavbarComponent() {
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
-            flexGrow: 6,
+            flexGrow: 10,
             justifyContent: "flex-start", // Aligne les liens à gauche
-            gap: 2, // Espacement entre les liens
           }}
         >
           {menuItemsLeft.map((item, index) => (
@@ -75,7 +74,7 @@ export default function NavbarComponent() {
           sx={{
             display: { xs: "none", md: "flex" },
             justifyContent: "flex-end", // Aligne les liens à droite
-            gap: 2, // Espacement entre les liens
+            gap: 1, // Espacement entre les liens
           }}
         >
           {menuItemsRight.map((item, index) => (

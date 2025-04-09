@@ -24,16 +24,16 @@ const DownloadButton = () => {
         displayEmpty
         sx={{ width: "300px", textAlign: "center" }}
       >
-        <MenuItem value="" disabled>
+        <MenuItem value="" disabled sx={{textAlign:"center"}}>
           Choisissez un document
         </MenuItem>
-        <MenuItem value="https://ec-bievres.ac-versailles.fr/IMG/pdf/test_pdf.pdf">
-          Document de test
+        <MenuItem value="https://pousses.fr/sites/default/files/2019-08/pdf_test_1.pdf">
+          Document de test 1
         </MenuItem>
-        <MenuItem value="https://ec-bievres.ac-versailles.fr/IMG/pdf/test_pdf.pdf">
+        <MenuItem value="https://www.orimi.com/pdf-test.pdf">
           Document de test 2
         </MenuItem>
-        <MenuItem value="https://ec-bievres.ac-versailles.fr/IMG/pdf/test_pdf.pdf">
+        <MenuItem value="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
           Document de test 3
         </MenuItem>
       </Select>
