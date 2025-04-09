@@ -1,8 +1,8 @@
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Navbar2 from "../components/navbar2";
-import { Box, Typography } from "@mui/material";
-import { FacebookEmbed, InstagramEmbed, LinkedInEmbed } from "react-social-media-embed"; // Assurez-vous d'avoir installé react-facebook-embed
+import { Box, Typography, Button, Card, CardContent } from "@mui/material";
+import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
 
 export default function VieQuotidienne() {
   return (
@@ -20,27 +20,79 @@ export default function VieQuotidienne() {
           paddingTop: "128px", // Compense la hauteur combinée des deux barres de navigation
         }}
       >
-
         <Typography variant="h5" gutterBottom sx={{ marginTop: "100px", textAlign: "center" }}>
           Suivez-nous sur les réseaux sociaux
         </Typography>
 
-        <InstagramEmbed
-          url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
-          width={500} // Largeur de l'embed
-          height={400} // Hauteur de l'embed
-          textAlign="center" // Centrer le texte
-          style={{ margin: "0 auto" }} // Centrer l'embed
-        />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center", // Centre les éléments horizontalement
+            flexWrap: "wrap", // Permet de passer à la ligne si l'espace est insuffisant
+            gap: 4, // Ajoute un espace entre les éléments
+            marginTop: 4,
+          }}
+        >
+          {/* Carte Facebook */}
+          <Card sx={{ width: 300, textAlign: "center" }}>
+            <CardContent>
+              <Facebook fontSize="large" sx={{ color: "#4267B2" }} />
+              <Typography variant="h6" sx={{ marginTop: 2 }}>
+                Facebook
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                href="https://www.facebook.com/ehpadargelesgazost"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ marginTop: 2 }}
+              >
+                Nos actualités
+              </Button>
+            </CardContent>
+          </Card>
 
-        <FacebookEmbed
-          url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
-          width={500} // Largeur de l'embed
-          height={400} // Hauteur de l'embed
-          textAlign="center" // Centrer le texte
-          style={{ margin: "0 auto" }} // Centrer l'embed
-        />
+          {/* Carte Instagram */}
+          <Card sx={{ width: 300, textAlign: "center" }}>
+            <CardContent>
+              <Instagram fontSize="large" sx={{ color: "#E1306C" }} />
+              <Typography variant="h6" sx={{ marginTop: 2 }}>
+                Instagram
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                href="https://www.instagram.com/ehpadargelesgazost/"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ marginTop: 2 }}
+              >
+                Nos actualités
+              </Button>
+            </CardContent>
+          </Card>
 
+          {/* Carte LinkedIn */}
+          <Card sx={{ width: 300, textAlign: "center" }}>
+            <CardContent>
+              <LinkedIn fontSize="large" sx={{ color: "#0077B5" }} />
+              <Typography variant="h6" sx={{ marginTop: 2 }}>
+                LinkedIn
+              </Typography>
+              <Button
+                variant="contained"
+                color="info"
+                href="https://fr.linkedin.com/company/ehpad-lbdh"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ marginTop: 2 }}
+              >
+                Nos actualités
+              </Button>
+            </CardContent>
+          </Card>
+        </Box>
       </Box>
       <Footer />
     </>
