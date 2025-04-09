@@ -2,7 +2,7 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Navbar2 from "../components/navbar2";
 import { Box, Typography } from "@mui/material";
-import { InstagramEmbed, LinkedInEmbed } from "react-social-media-embed"; // Assurez-vous d'avoir installé react-facebook-embed
+import { FacebookEmbed, InstagramEmbed, LinkedInEmbed } from "react-social-media-embed"; // Assurez-vous d'avoir installé react-facebook-embed
 
 export default function VieQuotidienne() {
   return (
@@ -26,6 +26,14 @@ export default function VieQuotidienne() {
         </Typography>
 
         <InstagramEmbed
+          url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
+          width={500} // Largeur de l'embed
+          height={400} // Hauteur de l'embed
+          textAlign="center" // Centrer le texte
+          style={{ margin: "0 auto" }} // Centrer l'embed
+        />
+
+        <FacebookEmbed
           url="https://www.instagram.com/ehpadargelesgazost/" // Remplacez par l'URL de votre page Instagram
           width={500} // Largeur de l'embed
           height={400} // Hauteur de l'embed
