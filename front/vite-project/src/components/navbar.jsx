@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, darkScrollbar } from "@mui/material";
+import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { FaHome } from "react-icons/fa";
 
 export default function NavbarComponent() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -46,29 +45,35 @@ export default function NavbarComponent() {
         padding: 0,
         overflow: "hidden", // Empêche tout débordement
         backgroundColor: "#ededed",
-        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Ajout d'une ombre légère
+        boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)", //ombre plus prononcée
       }}
     >
       <Toolbar
         sx={{
-          justifyContent: "space-between", // Espace entre les éléments
+          justifyContent: "space-between", // Espace entre les groupes d'éléments
           alignItems: "center", // Centre les éléments verticalement
           padding: "0 16px", // Ajout d'un padding horizontal
           height: "100%", // Prend toute la hauteur de la navbar
         }}
       >
-        {/* Logo à gauche */}
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <IconButton href="/" color="inherit" sx={{ fontSize: "24px" }}>
-            <FaHome />
-          </IconButton>
+        {/* Logo tout à gauche */}
+        <Box sx={{ display: "flex", alignItems: "center", marginRight: "16px" }}>
+          <a href="/">
+            <img
+              src="./src/images/BdH.jpg"
+              alt="Logo"
+              width="120"
+              height="80"
+              style={styleLogoNav}
+            />
+          </a>
         </Box>
 
         {/* Liens alignés à gauche */}
         <Box
           sx={{
-            display: { xs: "none", md: "flex" },
-            gap: 2, // Espacement uniforme entre les liens
+            display: { xs: "none", md: "flex" }, // Masqué sur les petits écrans
+            marginLeft: { xs: "20px", md: "-15px" }, // Ajout d'un espacement sur les petits écrans
           }}
         >
           {menuItemsLeft.map((item, index) => (
@@ -78,7 +83,8 @@ export default function NavbarComponent() {
               color="inherit"
               sx={{
                 textTransform: "none", // Supprime l'uppercase
-                fontSize: "16px", // Taille de police uniforme
+                fontSize: "15px", // Réduction de la taille de police
+                marginLeft: "10px",
               }}
             >
               {item.text}
@@ -89,8 +95,8 @@ export default function NavbarComponent() {
         {/* Liens alignés à droite */}
         <Box
           sx={{
-            display: { xs: "none", md: "flex" },
-            gap: 3, // Espacement uniforme entre les liens
+            display: { xs: "none", md: "flex" }, // Masqué sur les petits écrans
+            gap: 2, // Espacement uniforme entre les liens
           }}
         >
           {menuItemsRight.map((item, index) => (
@@ -100,7 +106,8 @@ export default function NavbarComponent() {
               color="inherit"
               sx={{
                 textTransform: "none", // Supprime l'uppercase
-                fontSize: "16px", // Taille de police uniforme
+                fontSize: "15px", // Réduction de la taille de police
+                padding: "6px 12px", // Réduction du padding pour un meilleur ajustement
               }}
             >
               {item.text}
