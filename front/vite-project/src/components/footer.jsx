@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Typography, Link as MuiLink } from "@mui/material";
+import { Box, Typography, Link as MuiLink } from "@mui/material";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
@@ -40,13 +40,36 @@ export default function Footer() {
     height: 80,
     width: 120,
     margin: "0 10px",
+    borderRadius:"10px",
   };
 
- 
   const iconStyle = {
     margin: "0 10px",
     color: "#333",
     transition: "transform 0.3s ease", // Animation au survol
+  };
+
+  const linkStyle = {
+    color: "black",
+    textDecoration: "none",
+    position: "relative",
+    fontSize: "large",
+    "&:hover": {
+      textDecoration: "none",
+    },
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      width: "0",
+      height: "2px",
+      bottom: "-2px",
+      left: "0",
+      backgroundColor: "black",
+      transition: "width 0.3s ease",
+    },
+    "&:hover::after": {
+      width: "100%",
+    },
   };
 
   return (
@@ -69,7 +92,6 @@ export default function Footer() {
           src="./src/images/ski.jpg"
           style={logoStyle}
           alt="Second logo"
-
         />
         <img
           src="./src/images/ski.jpg"
@@ -77,36 +99,40 @@ export default function Footer() {
           alt="Troisième logo"
         />
 
-        {/* Boutons et icônes */}
-        <MuiLink href="/mentions-legales" underline="none">
-          <Button variant="body2" sx={{color:'black'}}>Mentions légales</Button>
+        {/* Liens avec animation underline */}
+        <MuiLink href="/mentions-legales" sx={linkStyle}>
+          Mentions légales
         </MuiLink>
 
         <MuiLink href="https://www.facebook.com/ehpad.argeles.gazost/" underline="none">
-          <FaFacebook 
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          size={30} style={iconStyle} 
+          <FaFacebook
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            size={30}
+            style={iconStyle}
           />
         </MuiLink>
 
         <MuiLink href="https://www.instagram.com/ehpadargelesgazost/" underline="none">
-          <FaInstagram 
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          size={30} style={iconStyle} 
+          <FaInstagram
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            size={30}
+            style={iconStyle}
           />
         </MuiLink>
-        
+
         <MuiLink href="https://fr.linkedin.com/company/ehpad-lbdh/" underline="none">
           <FaLinkedin
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")} 
-          size={30} style={iconStyle} />
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            size={30}
+            style={iconStyle}
+          />
         </MuiLink>
 
-        <MuiLink href="/nous-contacter" underline="none">
-          <Button variant="body2" sx={{color:'black'}}>Nous contacter</Button>
+        <MuiLink href="/nous-contacter" sx={linkStyle}>
+          Nous contacter
         </MuiLink>
       </Box>
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, darkScrollbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { FaHome } from "react-icons/fa";
 
 export default function NavbarComponent() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -10,6 +11,12 @@ export default function NavbarComponent() {
       return;
     }
     setDrawerOpen(open);
+  };
+
+  const styleLogoNav = {
+    verticalAlign: "middle",
+    cursor: "pointer",
+    borderRadius: "10px",
   };
 
   const menuItemsLeft = [
@@ -31,39 +38,49 @@ export default function NavbarComponent() {
       position="fixed"
       color="default"
       sx={{
-        width: "100%",
+        width: "100vw", // Prend toute la largeur de la fenêtre
+        height: "100px", // Hauteur fixe pour la navbar
         top: 0,
         left: 0,
         margin: 0,
         padding: 0,
-        boxShadow: "none",
+        overflow: "hidden", // Empêche tout débordement
+        backgroundColor: "#ededed",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Ajout d'une ombre légère
       }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", padding: 0 , backgroundColor: "#ededed"}}>
-        {/* Logo */}
-        {/* Logo cliquable */}
-        <Box sx={{ flexGrow: 1 }}>
-          <a href="/">
-            <img
-              src=".\src\images\BdH.jpg"
-              alt="Logo"
-              width="120"
-              height="80"
-              style={{ verticalAlign: "middle", cursor: "pointer" }}
-            />
-          </a>
+      <Toolbar
+        sx={{
+          justifyContent: "space-between", // Espace entre les éléments
+          alignItems: "center", // Centre les éléments verticalement
+          padding: "0 16px", // Ajout d'un padding horizontal
+          height: "100%", // Prend toute la hauteur de la navbar
+        }}
+      >
+        {/* Logo à gauche */}
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton href="/" color="inherit" sx={{ fontSize: "24px" }}>
+            <FaHome />
+          </IconButton>
         </Box>
 
         {/* Liens alignés à gauche */}
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
-            flexGrow: 10,
-            justifyContent: "flex-start", // Aligne les liens à gauche
+            gap: 2, // Espacement uniforme entre les liens
           }}
         >
           {menuItemsLeft.map((item, index) => (
-            <Button key={index} href={item.href} color="inherit">
+            <Button
+              key={index}
+              href={item.href}
+              color="inherit"
+              sx={{
+                textTransform: "none", // Supprime l'uppercase
+                fontSize: "16px", // Taille de police uniforme
+              }}
+            >
               {item.text}
             </Button>
           ))}
@@ -73,12 +90,19 @@ export default function NavbarComponent() {
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
-            justifyContent: "flex-end", // Aligne les liens à droite
-            gap: 1, // Espacement entre les liens
+            gap: 3, // Espacement uniforme entre les liens
           }}
         >
           {menuItemsRight.map((item, index) => (
-            <Button key={index} href={item.href} color="inherit">
+            <Button
+              key={index}
+              href={item.href}
+              color="inherit"
+              sx={{
+                textTransform: "none", // Supprime l'uppercase
+                fontSize: "16px", // Taille de police uniforme
+              }}
+            >
               {item.text}
             </Button>
           ))}
