@@ -1,63 +1,62 @@
-import React, { useState } from "react";
-import { Box, MenuItem, Select, Typography, Button, Card, CardContent } from "@mui/material";
+import React from "react";
+import { Box, Typography, List, ListItem, ListItemIcon, ListItemText, Button, Card, CardContent } from "@mui/material";
+import { Description as DocumentIcon, Download as DownloadIcon } from "@mui/icons-material";
 
 const DownloadButton = () => {
-  const [selectedLink, setSelectedLink] = useState("");
+  const documents = [
+    { name: "Document de test 1", link: "https://pousses.fr/sites/default/files/2019-08/pdf_test_1.pdf" },
+    { name: "Document de test 2", link: "https://www.orimi.com/pdf-test.pdf" },
+    { name: "Document de test 3", link: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+  ];
 
-  const handleValidate = () => {
-    if (selectedLink) {
-      window.open(selectedLink, "_blank", "noopener,noreferrer");
-      setSelectedLink(""); // Réinitialise la sélection après validation
-    } else {
-      alert("Veuillez sélectionner un document avant de valider.");
-    }
+  const handleDownload = (link) => {
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" sx={{ height: "100vh", overflowY: "auto" }}>
+    <Box display="flex" justifyContent="center" alignItems="center" sx={{ height: "120vh" }}>
       <Card
         sx={{
           width: 400,
           textAlign: "center",
           padding: 2,
-          transition: "transform 0.3s, box-shadow 0.3s", // Animation fluide
-          "&:hover": {
-            transform: "scale(1.02)", // Agrandit légèrement la carte
-            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.3)", // Ajoute une ombre plus marquée
-          },
+          maxHeight: "80vh",
+          overflowY: "auto", // Ajoute une barre de défilement si nécessaire
         }}
       >
         <CardContent>
           <Typography variant="h6" gutterBottom>
-            Sélectionnez un document à télécharger
+            Liste des documents à télécharger
           </Typography>
-          <Select
-            value={selectedLink}
-            onChange={(event) => setSelectedLink(event.target.value)}
-            displayEmpty
-            sx={{ width: "300px", textAlign: "center", marginBottom: 2 }}
-          >
-            <MenuItem value="" disabled sx={{ textAlign: "center" }}>
-              Choisissez un document
-            </MenuItem>
-            <MenuItem value="https://pousses.fr/sites/default/files/2019-08/pdf_test_1.pdf">
-              Document de test 1
-            </MenuItem>
-            <MenuItem value="https://www.orimi.com/pdf-test.pdf">
-              Document de test 2
-            </MenuItem>
-            <MenuItem value="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
-              Document de test 3
-            </MenuItem>
-          </Select>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleValidate}
-            sx={{ marginTop: 2 }}
-          >
-            Valider
-          </Button>
+          <List>
+            {documents.map((doc, index) => (
+              <ListItem
+                key={index}
+                sx={{
+                  
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "5px 0",
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <ListItemIcon>
+                    <DocumentIcon color="primary" />
+                  </ListItemIcon>
+                  <ListItemText primary={doc.name} />
+                </Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  startIcon={<DownloadIcon />}
+                  onClick={() => handleDownload(doc.link)}
+                >
+                  Télécharger
+                </Button>
+              </ListItem>
+            ))}
+          </List>
         </CardContent>
       </Card>
     </Box>

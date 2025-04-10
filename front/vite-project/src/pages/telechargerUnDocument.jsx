@@ -6,9 +6,7 @@ export default function TelechargerUnDocument() {
   return (
     <>
       <Navbar />
-      
         <DownloadButton/>
-        
       <Footer />
     </>
   );

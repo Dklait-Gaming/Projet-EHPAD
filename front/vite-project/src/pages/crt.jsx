@@ -11,10 +11,7 @@ export default function CRT() {
           Page de CRT
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Cette page est dédiée à la CRT.
-        </Typography>
-        <Typography variant="body1" color="textSecondary">
-          Elle est encore en construction.
+          Cette page est dédiée à la CRT en cours de construction.
         </Typography>
       </Box>
       <Footer />
