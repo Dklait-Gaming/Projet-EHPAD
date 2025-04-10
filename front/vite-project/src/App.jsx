@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
+
 import React from 'react';
 
 //Importations de toutes mes pages
@@ -21,7 +22,7 @@ import VieQuotidienne from './pages/vieQuotidienne';
 //importation des fichiers .jsx
 import Home from './pages/home.jsx';
 import AuthentificationAdmin from './pages/authentificationAdmin.jsx';
-import DashboardAdmin from './pages/dashboardAdmin.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />
           <Route path='/admission' element={<Admission />} />
           <Route path='/authentification-admin' element={<AuthentificationAdmin/>} />
-          <Route path='/dashboard-admin' element={<DashboardAdmin/>} />
+          <Route path='/dashboard-admin' element={<AdminDashboard/>} />
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>
       </Router>
