@@ -25,11 +25,12 @@ function TextSizeAdjuster({ onFontSizeChange }) {
           variant="contained"
           color="primary"
           onClick={decreaseTextSize}
-          sx={{
+          sx={{     
             height: "40px",
             width: "40px",
             borderRadius: "50%", // Bouton circulaire
             minWidth: "40px", // Assure une largeur minimale
+            marginRight:"-10px", // Change le placement du bouton vers la droite
             fontSize: "14px", // Taille du texte dans le bouton
           }}
         >
@@ -41,9 +42,10 @@ function TextSizeAdjuster({ onFontSizeChange }) {
           onClick={increaseTextSize}
           sx={{
             height: "40px",
-            width: "40px",
+            width: "40px",        
             borderRadius: "50%", // Bouton circulaire
             minWidth: "40px", // Assure une largeur minimale
+            marginTop:"-15px", // Change le placement du bouton vers le haut
             fontSize: "14px", // Taille du texte dans le bouton
           }}
         >

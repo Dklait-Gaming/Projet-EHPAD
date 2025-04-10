@@ -4,6 +4,7 @@ import Navbar from "../components/navbar";
 import Navbar2 from "../components/navbar2";
 import { Box, Typography } from "@mui/material";
 import TextSizeAdjuster from "../components/buttonVision";
+import ScrollInverse from "../components/buttonScrollInverse";
 
 function HebergementTemporaire() {
   const [fontSize, setFontSize] = useState(16); // Taille par défaut pour le texte

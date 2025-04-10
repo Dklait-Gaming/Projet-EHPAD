@@ -19,7 +19,7 @@ const DownloadButton = () => {
         sx={{
           width: 400,
           textAlign: "center",
-          padding: 2,
+          padding: 1,
           maxHeight: "80vh",
           overflowY: "auto", // Ajoute une barre de défilement si nécessaire
         }}
