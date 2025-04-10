@@ -2,7 +2,6 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import SecureMail from "../components/mail";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
-import { Phone, PhoneCallback } from "@mui/icons-material";
 
 export default function Taf() {
   return (
@@ -23,21 +22,7 @@ export default function Taf() {
             marginTop: 4, // Ajoute un espace au-dessus
           }}
         >
-
-        {/* Carte LinkedIn */}
-      <Card sx={{ width: 500, textAlign: "center"}}>
-            <CardContent>
-              
-              <Typography variant="h6" sx={{ marginTop: 2 }}>
-                Informations de contact supplémentaire
-              </Typography>
-              <Typography variant="h8" sx={{ marginTop: 2 }}>
-                <Phone /> 02.02.02.02.02
-              </Typography>
-              
-            </CardContent>
-          </Card>
-          </Box>
+        </Box>
       </Box>
       <Footer />
     </>

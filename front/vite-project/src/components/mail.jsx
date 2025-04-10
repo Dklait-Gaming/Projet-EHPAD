@@ -1,37 +1,31 @@
 import React, { useState } from "react";
-import { Button, TextField, Alert, Box, Typography, Snackbar } from "@mui/material";
+import { Button, TextField, Alert, Box, Typography, Snackbar, Card, CardContent } from "@mui/material";
 
 const SecureMail = () => {
   const [showEmail, setShowEmail] = useState(false);
   const [quizAnswer, setQuizAnswer] = useState("");
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false); // État pour le Snackbar
-  const [snackbarMessage, setSnackbarMessage] = useState(""); // Message du Snackbar
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // Type du Snackbar
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const encryptedEmail = "Y29udGFjdEBkb21haW5lLmNvbQ==";
 
   const decryptEmail = (encrypted) => atob(encrypted);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (quizAnswer.toLowerCase() === "blanc") {
+    if (quizAnswer.toLowerCase() === "4") {
       setShowEmail(true);
-      setError(false);
-      setSuccess(true);
       setSnackbarMessage("Bonne réponse ! Vous pouvez maintenant voir l'e-mail.");
       setSnackbarSeverity("success");
     } else {
-      setError(true);
-      setSuccess(false);
       setSnackbarMessage("Réponse incorrecte. Veuillez réessayer.");
       setSnackbarSeverity("error");
     }
-    setSnackbarOpen(true); // Ouvrir le Snackbar
+    setSnackbarOpen(true);
   };
 
   const handleSnackbarClose = () => {
-    setSnackbarOpen(false); // Fermer le Snackbar
+    setSnackbarOpen(false);
   };
 
   return (
@@ -42,12 +36,11 @@ const SecureMail = () => {
             Pour afficher l'e-mail, répondez à la question suivante :
           </Typography>
           <Typography variant="h6" gutterBottom>
-            <strong>De quelle couleur est le cheval blanc d'Henry IV ?</strong>
+            <strong>Combien font 2+2 ?</strong>
           </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
               fullWidth
-              label="Votre réponse en minuscule"
               variant="outlined"
               value={quizAnswer}
               onChange={(e) => setQuizAnswer(e.target.value)}
@@ -59,12 +52,32 @@ const SecureMail = () => {
           </form>
         </Box>
       ) : (
-        <Typography variant="body1">
-          Contactez-nous à :{" "}
-          <a href={`mailto:${decryptEmail(encryptedEmail)}`}>
-            {decryptEmail(encryptedEmail)}
-          </a>
-        </Typography>
+        <Box display="flex" justifyContent="center" alignItems="center" sx={{ height: "20vh" }}>
+          <Card
+            sx={{
+              width: 400,
+              textAlign: "center",
+              padding: 2,
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", // Ombre portée pour l'effet 3D
+              transition: "transform 0.3s, box-shadow 0.3s", // Animation fluide
+              "&:hover": {
+                transform: "scale(1.05)", // Agrandit légèrement la carte au survol
+                boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.4)", // Ombre plus marquée au survol
+              },
+            }}
+          >
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Contactez-nous à :
+              </Typography>
+              <Typography variant="body1" sx={{ marginTop: 2 }}>
+                <a href={`mailto:${decryptEmail(encryptedEmail)}`} style={{ textDecoration: "none", color: "#1976d2" }}>
+                  {decryptEmail(encryptedEmail)}
+                </a>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
       )}
 
       {/* Snackbar pour afficher les messages */}
