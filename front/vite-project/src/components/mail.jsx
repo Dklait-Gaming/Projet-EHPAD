@@ -7,6 +7,7 @@ const SecureMail = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [allowEmail, setAllowEmail] = useState(false); // Contrôle l'affichage de l'e-mail
   const encryptedEmail = "Y29udGFjdEBkb21haW5lLmNvbQ==";
 
   const decryptEmail = (encrypted) => atob(encrypted);
@@ -14,18 +15,22 @@ const SecureMail = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (quizAnswer.toLowerCase() === "4") {
-      setShowEmail(true);
-      setSnackbarMessage("Bonne réponse ! Vous pouvez maintenant voir l'e-mail.");
+      setSnackbarMessage("Bonne réponse ! Cliquez sur 'Fermer' pour voir l'e-mail.");
       setSnackbarSeverity("success");
+      setSnackbarOpen(true);
     } else {
       setSnackbarMessage("Réponse incorrecte. Veuillez réessayer.");
       setSnackbarSeverity("error");
+      setSnackbarOpen(true);
     }
-    setSnackbarOpen(true);
   };
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+    if (snackbarSeverity === "success") {
+      setAllowEmail(true); // Permet d'afficher l'e-mail uniquement après fermeture de l'alerte
+      setShowEmail(true);
+    }
   };
 
   return (
@@ -50,8 +55,30 @@ const SecureMail = () => {
               Vérifier
             </Button>
           </form>
+
+          {/* Snackbar pour afficher les messages sous le formulaire */}
+          <Snackbar
+            open={snackbarOpen}
+            onClose={handleSnackbarClose}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }} // Position sous le formulaire
+          >
+            <Alert
+              onClose={handleSnackbarClose}
+              severity={snackbarSeverity}
+              sx={{ width: "100%" }}
+              action={
+                snackbarSeverity === "success" && (
+                  <Button color="inherit" size="small" onClick={handleSnackbarClose}>
+                    Fermer
+                  </Button>
+                )
+              }
+            >
+              {snackbarMessage}
+            </Alert>
+          </Snackbar>
         </Box>
-      ) : (
+      ) : allowEmail ? (
         <Box display="flex" justifyContent="center" alignItems="center" sx={{ height: "20vh" }}>
           <Card
             sx={{
@@ -78,19 +105,7 @@ const SecureMail = () => {
             </CardContent>
           </Card>
         </Box>
-      )}
-
-      {/* Snackbar pour afficher les messages */}
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={4000}
-        onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: "100%" }}>
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      ) : null}
     </Box>
   );
 };
