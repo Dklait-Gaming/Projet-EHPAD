@@ -34,7 +34,7 @@ export default function VieQuotidienne() {
           }}
         >
           {/* Carte Facebook */}
-          <Card sx={{ width: 300, textAlign: "center" }}>
+          <Card sx={{ width: 300, textAlign: "center", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)" }}>
             <CardContent>
               <Facebook fontSize="large" sx={{ color: "#4267B2" }} />
               <Typography variant="h6" sx={{ marginTop: 2 }}>
@@ -54,7 +54,7 @@ export default function VieQuotidienne() {
           </Card>
 
           {/* Carte Instagram */}
-          <Card sx={{ width: 300, textAlign: "center" }}>
+          <Card sx={{ width: 300, textAlign: "center", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)" }}>
             <CardContent>
               <Instagram fontSize="large" sx={{ color: "#E1306C" }} />
               <Typography variant="h6" sx={{ marginTop: 2 }}>
@@ -74,7 +74,7 @@ export default function VieQuotidienne() {
           </Card>
 
           {/* Carte LinkedIn */}
-          <Card sx={{ width: 300, textAlign: "center" }}>
+          <Card sx={{ width: 300, textAlign: "center" , boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)" }}>
             <CardContent>
               <LinkedIn fontSize="large" sx={{ color: "#0077B5" }} />
               <Typography variant="h6" sx={{ marginTop: 2 }}>
