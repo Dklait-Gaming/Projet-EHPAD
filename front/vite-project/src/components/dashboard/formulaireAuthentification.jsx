@@ -8,7 +8,7 @@ export default function FormulaireAuthentification({ onLogin }) {
 
   const handleLogin = () => {
     // Exemple de validation simple
-    if (username === "admin" && password === "password123") {
+    if (username === "admin" && password === "admin") {
       onLogin(); // Appelle la fonction pour indiquer que l'utilisateur est connecté
     } else {
       setError("Nom d'utilisateur ou mot de passe incorrect.");
