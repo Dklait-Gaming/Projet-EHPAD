@@ -4,6 +4,6 @@
 #### Installation du projet :
 
 ```powershell
-cd front/vite-project
+cd front\vite-project
 npm install
 
