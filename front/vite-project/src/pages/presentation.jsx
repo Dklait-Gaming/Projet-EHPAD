@@ -9,7 +9,7 @@ export default function Presentation() {
     <>
       <Navbar />
       <Navbar2 />
-      <Box sx={{ padding: 2 , overflowY: "auto", height: "100vh" , paddingTop: "200px", textAlign: "center"}}>
+      <Box sx={{ padding: 2 , height: "100vh" , paddingTop: "200px", textAlign: "center"}}>
         <Typography variant="h4" gutterBottom>
           Présentation de l'EHPAD
         </Typography>

@@ -16,7 +16,6 @@ export default function Ehpad() {
           paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           paddingBottom: "100px", // Compense la hauteur du footer
           height: "100vh", // Hauteur de la fenêtre
-          overflowY: "auto", // Ajoute un scroll vertical si nécessaire
         }}
       >
         

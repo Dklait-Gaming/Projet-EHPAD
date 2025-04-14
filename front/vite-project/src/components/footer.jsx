@@ -1,46 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY; // Position actuelle du scroll
-      const windowHeight = window.innerHeight; // Hauteur de la fenêtre
-      const fullHeight = document.documentElement.scrollHeight; // Hauteur totale du document
-
-      // Affiche le footer uniquement si l'utilisateur est en bas de la page
-      if (scrollTop + windowHeight >= fullHeight - 10) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const footerStyle = {
     backgroundColor: "#ededed",
     textAlign: "center",
     padding: "10px 0",
-    position: "fixed", // Fixe le footer
-    bottom: 0, // Place le footer en bas de la fenêtre
-    left: 0,
-    width: "100%", // S'étend sur toute la largeur de la fenêtre
-    zIndex: 1000, // Assure que le footer reste au-dessus des autres éléments
-    transition: "transform 0.3s ease", // Animation pour l'apparition/disparition
-    transform: isVisible ? "translateY(0)" : "translateY(100%)", // Glisse vers le bas lorsqu'il disparaît
+    position: "relative", // Position relative pour qu'il soit dans le flux normal
+    width: "100%", // Prend toute la largeur de la fenêtre
   };
 
   const logoStyle = {
     height: 80,
     width: 120,
     margin: "0 10px",
-    borderRadius:"10px",
+    borderRadius: "10px",
   };
 
   const iconStyle = {
@@ -80,7 +55,6 @@ export default function Footer() {
         alignItems="center"
         gap={2}
         mb={2}
-        flexWrap="wrap"
       >
         {/* Logos avec animation au survol */}
         <img

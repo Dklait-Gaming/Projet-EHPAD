@@ -11,7 +11,6 @@ export default function Admission() {
       <Box
         sx={{
           height: "100vh", // Hauteur de la fenêtre
-          overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           padding: 2,
           paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           textAlign: "center",

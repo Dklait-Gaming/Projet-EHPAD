@@ -1,31 +1,35 @@
-import { Link } from "react-router-dom";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import Sidebar from "../components/dashboard/Sidebar";
+import { useState } from "react";
 
 export default function DashboardAdmin() {
-  return (
-    <Box sx={{ padding: 2, textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>
-        Page Dashboard Admin
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        Affichage des statistiques de l'établissement ici :
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        Affichage des contenus éditables
-      </Typography>
-      <HomeButton />
-    </Box>
-  );
-}
 
-function HomeButton() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // État pour gérer l'authentification
+
+  const handleLogin = () => {
+    setIsAuthenticated(true); // L'utilisateur est connecté
+  };
+
   return (
-    <Box sx={{ marginTop: 2 }}>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Button variant="contained" color="primary">
-          Retour à l'accueil
-        </Button>
-      </Link>
+    <Box>
+      {!isAuthenticated ? (
+        // Affiche le formulaire d'authentification si l'utilisateur n'est pas connecté
+        <FormulaireAuthentification onLogin={handleLogin} />
+      ) : (
+        // Affiche le contenu du tableau de bord si l'utilisateur est connecté
+        <Box sx={{ display: "flex" }}>
+          <Sidebar />
+          <Box sx={{ flex: 1, padding: 3 }}>
+            <Typography variant="h4" gutterBottom>
+              Bienvenue sur le tableau de bord
+            </Typography>
+            {/* Contenu du tableau de bord */}
+            <Typography variant="body1">
+              Voici le contenu du tableau de bord admin.
+            </Typography>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }

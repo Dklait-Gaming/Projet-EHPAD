@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <Box sx={{ padding: 2 , overflowY: "auto", height: "100vh", paddingTop: "180px", paddingBottom: "100px" }}>
+      <Box sx={{ padding: 2 , height: "100vh", paddingTop: "180px", paddingBottom: "100px" }}>
         <FormulaireContact />
       </Box>
       <Footer />

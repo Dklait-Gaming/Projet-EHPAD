@@ -21,8 +21,7 @@ import VieQuotidienne from './pages/vieQuotidienne';
 
 //importation des fichiers .jsx
 import Home from './pages/home.jsx';
-import AuthentificationAdmin from './pages/authentificationAdmin.jsx';
-import DashboardAdmin from './pages/dashboardAdmin.jsx';
+import DashboardAdmin from './pages/dashboardAdmin.jsx'; // Assurez-vous que le fichier existe
 
 function App() {
   return (
@@ -43,7 +42,6 @@ function App() {
           <Route path='/presentation' element={<Presentation />} />
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />
           <Route path='/admission' element={<Admission />} />
-          <Route path='/authentification-admin' element={<AuthentificationAdmin/>} />
           <Route path='/dashboard-admin' element={<DashboardAdmin/>} />
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>

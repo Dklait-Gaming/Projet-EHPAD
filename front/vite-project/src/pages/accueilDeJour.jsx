@@ -16,7 +16,6 @@ export default function AccueilDeJour() {
         sx={{
           padding: 2,
           height: "100vh", // Hauteur de la fenêtre
-          overflowY: "auto", // Ajoute un scroll vertical si nécessaire
           paddingTop: "200px", // Compense la hauteur combinée des deux barres de navigation
           textAlign: "center",
           paddingBottom: "100px", // Compense la hauteur du footer

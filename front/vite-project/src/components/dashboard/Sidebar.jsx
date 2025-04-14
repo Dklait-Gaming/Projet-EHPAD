@@ -8,6 +8,7 @@ import {
   Mail as MailIcon,
   Widgets as ComponentsIcon
 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar({ activeTab, setActiveTab }) {
   return (
@@ -21,7 +22,7 @@ export default function Sidebar({ activeTab, setActiveTab }) {
           <ListItemIcon><PagesIcon /></ListItemIcon>
           <ListItemText primary="Pages" />
         </ListItem>
-        <ListItem button onClick={() => setActiveTab('components')}>
+        <ListItem button component={Link} to="/components" onClick={() => setActiveTab('components')}>
           <ListItemIcon><ComponentsIcon /></ListItemIcon>
           <ListItemText primary="Composants" />
         </ListItem>
