@@ -5,7 +5,5 @@
 
 ```powershell
 cd front/vite-project
-
-```powershell
 npm install
 
