@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 
+
+
+
 export default function FormulaireAuthentification({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +26,9 @@ export default function FormulaireAuthentification({ onLogin }) {
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)", // Fond semi-transparent
+        backgroundImage: `url(./src/images/project.jpg)`, //afficher une image en fond 
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -41,7 +46,7 @@ export default function FormulaireAuthentification({ onLogin }) {
         }}
       >
         <Typography variant="h5" gutterBottom>
-          Connexion Admin
+          S'authentifier
         </Typography>
         {error && (
           <Typography variant="body2" color="error" sx={{ marginBottom: 2 }}>
@@ -49,7 +54,7 @@ export default function FormulaireAuthentification({ onLogin }) {
           </Typography>
         )}
         <TextField
-          label="Nom d'utilisateur"
+          label="Identifiant"
           variant="outlined"
           fullWidth
           sx={{ marginBottom: 2 }}
