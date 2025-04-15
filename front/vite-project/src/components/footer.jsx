@@ -1,48 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
-  const [isVisible, setIsVisible] = useState(false); // État pour gérer la visibilité du footer
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Vérifie si l'utilisateur a atteint le bas de la page
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      if (scrollTop + windowHeight >= documentHeight) {
-        setIsVisible(true); // Affiche le footer
-      } else {
-        setIsVisible(false); // Cache le footer
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Nettoie l'événement
-  }, []);
-
   const footerStyle = {
     backgroundColor: "#ededed",
     textAlign: "center",
     padding: "10px 0",
-    position: "fixed", // Fixe le footer en bas de la fenêtre
-    bottom: 0,
-    left: 0,
+    position: "relative", // Le footer reste dans le flux normal de la page
     width: "100%", // Prend toute la largeur de la fenêtre
-    zIndex: 1000, // Assure que le footer est au-dessus des autres éléments
-    display: isVisible ? "block" : "none", // Affiche ou cache le footer
   };
 
   const iconStyle = {
     margin: "0 10px",
     color: "#333",
-    transition: "transform 0.3s ease",
-  };
-
-  const handleHover = (e, scale) => {
-    e.currentTarget.style.transform = `scale(${scale})`;
   };
 
   const logos = [
@@ -74,21 +45,7 @@ export default function Footer() {
           sx={{
             color: "black",
             textDecoration: "none",
-            position: "relative",
             fontSize: "large",
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              width: "0",
-              height: "2px",
-              bottom: "-2px",
-              left: "0",
-              backgroundColor: "black",
-              transition: "width 0.3s ease",
-            },
-            "&:hover::after": {
-              width: "100%",
-            },
           }}
         >
           Mentions légales
@@ -99,8 +56,6 @@ export default function Footer() {
             {React.cloneElement(item.icon, {
               size: 30,
               style: iconStyle,
-              onMouseEnter: (e) => handleHover(e, 1.1),
-              onMouseLeave: (e) => handleHover(e, 1),
             })}
           </MuiLink>
         ))}
@@ -110,21 +65,7 @@ export default function Footer() {
           sx={{
             color: "black",
             textDecoration: "none",
-            position: "relative",
             fontSize: "large",
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              width: "0",
-              height: "2px",
-              bottom: "-2px",
-              left: "0",
-              backgroundColor: "black",
-              transition: "width 0.3s ease",
-            },
-            "&:hover::after": {
-              width: "100%",
-            },
           }}
         >
           Nous contacter
