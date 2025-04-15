@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, TextField, Button, Box, Typography } from "@mui/material";
 
 export default function FormulaireContact() {
+  const [message, setMessage] = useState(""); // État pour le champ "Message"
+  const maxCharacters = 500; // Limite de caractères
 
-  // Fonction pour gérer l'envoi du formulaire
+  const handleMessageChange = (event) => {
+    const value = event.target.value;
+    if (value.length <= maxCharacters) {
+      setMessage(value); // Met à jour le message si la limite n'est pas dépassée
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault(); // Empêche le rechargement de la page
     const formData = new FormData(event.target); // Récupère les données du formulaire
@@ -12,19 +20,6 @@ export default function FormulaireContact() {
     // Vous pouvez envoyer les données à votre serveur ici
     console.log(data);
   };
-
-  // Fonction pour gérer la soumission du formulaire
-  const handleFormSubmit = (event) => {
-    event.preventDefault(); // Empêche le rechargement de la page
-    const formData = new FormData(event.target); // Récupère les données du formulaire
-    const data = Object.fromEntries(formData.entries()); // Convertit en objet
-
-    // Vous pouvez envoyer les données à votre serveur ici
-    console.log(data);
-  };
-
-
-
 
   return (
     <Container
@@ -40,7 +35,7 @@ export default function FormulaireContact() {
       <Typography variant="h5" align="center" gutterBottom>
         Formulaire de Contact
       </Typography>
-      <form action="/" method="POST">
+      <form onSubmit={handleSubmit}>
         <Box mb={2}>
           <TextField
             fullWidth
@@ -87,8 +82,17 @@ export default function FormulaireContact() {
             multiline
             rows={4}
             variant="outlined"
+            value={message}
+            onChange={handleMessageChange}
             required
           />
+          <Typography
+            variant="body2"
+            align="right"
+            sx={{ color: message.length === maxCharacters ? "red" : "gray" }}
+          >
+            {message.length}/{maxCharacters} caractères
+          </Typography>
         </Box>
         <Box textAlign="center">
           <Button variant="contained" color="primary" type="submit">
