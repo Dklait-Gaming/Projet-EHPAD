@@ -2,6 +2,30 @@ import React from "react";
 import { Container, TextField, Button, Box, Typography } from "@mui/material";
 
 export default function FormulaireContact() {
+
+  // Fonction pour gérer l'envoi du formulaire
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Empêche le rechargement de la page
+    const formData = new FormData(event.target); // Récupère les données du formulaire
+    const data = Object.fromEntries(formData.entries()); // Convertit en objet
+
+    // Vous pouvez envoyer les données à votre serveur ici
+    console.log(data);
+  };
+
+  // Fonction pour gérer la soumission du formulaire
+  const handleFormSubmit = (event) => {
+    event.preventDefault(); // Empêche le rechargement de la page
+    const formData = new FormData(event.target); // Récupère les données du formulaire
+    const data = Object.fromEntries(formData.entries()); // Convertit en objet
+
+    // Vous pouvez envoyer les données à votre serveur ici
+    console.log(data);
+  };
+
+
+
+
   return (
     <Container
       maxWidth="sm"
@@ -61,7 +85,7 @@ export default function FormulaireContact() {
             label="Message"
             name="message"
             multiline
-            rows={3}
+            rows={4}
             variant="outlined"
             required
           />

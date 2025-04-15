@@ -20,6 +20,13 @@ import TelechargerUnDocument from './pages/telechargerUnDocument';
 import VieQuotidienne from './pages/vieQuotidienne';
 import Home from './pages/home';
 import GestionContenu from './pages/gestiondeContenu';
+import Login from './pages/login.jsx';
+
+// Auth
+import { AuthProvider } from './auth/AuthContext';
+import PrivateRoute from './auth/PrivateRoute';
+
+
 
 //importer d'une feuille de style
 import './App.css';
@@ -28,6 +35,7 @@ function App() {
 
   return (
     <>
+    <AuthProvider>
       <Router>
         <Routes>
           <Route path='/accueil' element={<Home/>} />
@@ -43,10 +51,19 @@ function App() {
           <Route path='/presentation' element={<Presentation />} />
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />
           <Route path='/admission' element={<Admission />} />
-          <Route path='/admin' element={<GestionContenu/>} />
+
+          {/* Route protégée */}
+          <Route path='/admin' element={
+            <PrivateRoute>
+              <GestionContenu />
+            </PrivateRoute>
+          } />
+
+          <Route path='/login' element={<Login />} />
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>
-    </Router>
+      </Router>
+  </AuthProvider>
     </>
   );
 }
