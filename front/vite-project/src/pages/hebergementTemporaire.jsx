@@ -39,7 +39,6 @@ function HebergementTemporaire() {
             Nos équipes sont à votre disposition pour répondre à vos besoins et vous offrir un séjour agréable et
             confortable.
           </Typography>
-
           
         </Box>
       </Box>

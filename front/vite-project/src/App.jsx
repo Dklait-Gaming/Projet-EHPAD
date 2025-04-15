@@ -21,6 +21,9 @@ import VieQuotidienne from './pages/vieQuotidienne';
 import Home from './pages/home';
 import GestionContenu from './pages/gestiondeContenu';
 
+//importer d'une feuille de style
+import './App.css';
+
 function App() {
 
   return (
@@ -40,7 +43,7 @@ function App() {
           <Route path='/presentation' element={<Presentation />} />
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />
           <Route path='/admission' element={<Admission />} />
-          <Route path='/gestionContenu' element={<GestionContenu/>} />
+          <Route path='/admin' element={<GestionContenu/>} />
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>
     </Router>

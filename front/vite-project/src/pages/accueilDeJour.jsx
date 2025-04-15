@@ -1,7 +1,7 @@
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Navbar2 from "../components/navbar2";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, AppBar } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -28,7 +28,7 @@ export default function AccueilDeJour() {
           Voici le contenu de la page Accueil de jour. Ajoutez ici les informations nécessaires.
         </Typography>
 
-        <Typography variant="h4" marginTop="10%" gutterBottom>
+        <Typography variant="h5" marginTop="10%" gutterBottom>
           Informations des contacts
         </Typography>
 

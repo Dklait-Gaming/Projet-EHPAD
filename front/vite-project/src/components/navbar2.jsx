@@ -5,7 +5,7 @@ export default function Navbar2() {
   return (
     <AppBar
       position="fixed" // Fixe la barre en haut de la page
-      color="black" // Rend la navbar transparente
+      color="default" // Couleur par défaut de la barre
       sx={{
         width: "100%", // S'étend sur toute la largeur
         top: 100, // Ajuste la position pour laisser un espace suffisant sous la navbar principale
@@ -13,13 +13,11 @@ export default function Navbar2() {
         margin: 0, // Supprime les marges
         padding: 0, // Supprime les paddings
         zIndex: 1100, // Assure que la navbar secondaire reste au-dessus du contenu
-        backdropFilter: "blur(10px)", // Ajoute un effet de flou pour un design moderne
-        
         boxShadow: "0 5px 30px rgba(0, 0, 0, 0.3)", // Ombre 3D plus marquée
         maxWidth: "100%", // S'assure que la navbar ne dépasse pas la largeur de l'écran
         marginLeft: "auto", // Centre la navbar horizontalement
         marginRight: "auto", // Centre la navbar horizontalement
-        backgroundColor: "transparent", // Couleur de fond blanche avec transparence
+        backgroundColor: "white", // Couleur de fond blanche avec transparence
       }}
     >
       <Toolbar sx={{ justifyContent: "center", padding: 0 }}>

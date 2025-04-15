@@ -7,13 +7,17 @@ export default function Footer() {
     backgroundColor: "#ededed",
     textAlign: "center",
     padding: "10px 0",
-    position: "relative", // Le footer reste dans le flux normal de la page
+    position: "absolute", // Le footer est positionné en bas de la page
     width: "100%", // Prend toute la largeur de la fenêtre
   };
 
   const iconStyle = {
     margin: "0 10px",
     color: "#333",
+  };
+
+  const handleHover = (e, scale) => {
+    e.currentTarget.style.transform = `scale(${scale})`; // Applique un agrandissement
   };
 
   const logos = [
@@ -52,7 +56,11 @@ export default function Footer() {
         </MuiLink>
 
         {iconLinks.map((item, index) => (
-          <MuiLink key={index} href={item.href} underline="none">
+          <MuiLink
+            key={index}
+            href={item.href}
+            underline="none"
+          >
             {React.cloneElement(item.icon, {
               size: 30,
               style: iconStyle,
