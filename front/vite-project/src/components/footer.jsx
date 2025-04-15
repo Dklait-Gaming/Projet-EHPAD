@@ -16,10 +16,6 @@ export default function Footer() {
     color: "#333",
   };
 
-  const handleHover = (e, scale) => {
-    e.currentTarget.style.transform = `scale(${scale})`; // Applique un agrandissement
-  };
-
   const logos = [
     { src: "./src/images/BdH.jpg", alt: "Logo principal" },
     { src: "./src/images/ski.jpg", alt: "Second logo" },
@@ -51,6 +47,7 @@ export default function Footer() {
             textDecoration: "none",
             fontSize: "large",
           }}
+          
         >
           Mentions légales
         </MuiLink>
@@ -75,6 +72,7 @@ export default function Footer() {
             textDecoration: "none",
             fontSize: "large",
           }}
+          
         >
           Nous contacter
         </MuiLink>
