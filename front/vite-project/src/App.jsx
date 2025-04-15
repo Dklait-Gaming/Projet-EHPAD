@@ -18,10 +18,8 @@ import Presentation from './pages/presentation';
 import Taf from './pages/taf';
 import TelechargerUnDocument from './pages/telechargerUnDocument';
 import VieQuotidienne from './pages/vieQuotidienne';
-
-//importation des fichiers .jsx
-import Home from './pages/home.jsx';
-import GestionContenu from './pages/gestiondeContenu.jsx';
+import Home from './pages/home';
+import GestionContenu from './pages/gestiondeContenu';
 
 function App() {
   return (
