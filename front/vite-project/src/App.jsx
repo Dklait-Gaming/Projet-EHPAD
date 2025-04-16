@@ -2,8 +2,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
-import React, { use } from 'react';
-
 //Importations de toutes mes pages
 import AccueilDeJour from './pages/accueilDeJour';
 import Admission from './pages/admission';
@@ -19,9 +17,6 @@ import TelechargerUnDocument from './pages/telechargerUnDocument';
 import VieQuotidienne from './pages/vieQuotidienne';
 import Home from './pages/home';
 
-
-
-
 //importer d'une feuille de style
 import './App.css';
 
@@ -29,7 +24,8 @@ function App() {
 
   return (
     <>
-    <AuthProvider>
+
+      {/* Utilisation de BrowserRouter pour gérer les routes de l'application */}
       <Router>
         <Routes>
           <Route path='/accueil' element={<Home/>} />
@@ -48,7 +44,6 @@ function App() {
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>
       </Router>
-  </AuthProvider>
     </>
   );
 }
