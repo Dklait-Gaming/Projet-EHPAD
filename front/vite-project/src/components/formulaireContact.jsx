@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, TextField, Button, Box, Typography } from "@mui/material";
+import { useLocalStorage } from "../hooks/useLocalStorage"; // Import du hook personnalisé
 
 export default function FormulaireContact() {
-  const [message, setMessage] = useState(""); // État pour le champ "Message"
   const maxCharacters = 500; // Limite de caractères
 
-  const handleMessageChange = (event) => {
-    const value = event.target.value;
-    if (value.length <= maxCharacters) {
-      setMessage(value); // Met à jour le message si la limite n'est pas dépassée
-    }
+  // Utilisation de useLocalStorage pour sauvegarder les données
+  const [formData, setFormData] = useLocalStorage("formulaireContact", {
+    name: "",
+    prenom: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "message" && value.length > maxCharacters) return; // Limite de caractères pour le message
+    setFormData({ ...formData, [name]: value }); // Met à jour les données dans le localStorage
   };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Empêche le rechargement de la page
-    const formData = new FormData(event.target); // Récupère les données du formulaire
-    const data = Object.fromEntries(formData.entries()); // Convertit en objet
+    console.log("Données envoyées :", formData);
+    alert("Votre message a été envoyé avec succès !");
 
-    // Vous pouvez envoyer les données à votre serveur ici
-    console.log(data);
+    // Réinitialise le formulaire après soumission
+    setFormData({
+      name: "",
+      prenom: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
   };
 
   return (
@@ -42,6 +56,8 @@ export default function FormulaireContact() {
             label="Nom"
             name="name"
             variant="outlined"
+            value={formData.name}
+            onChange={handleChange}
             required
           />
         </Box>
@@ -51,6 +67,8 @@ export default function FormulaireContact() {
             label="Prénom"
             name="prenom"
             variant="outlined"
+            value={formData.prenom}
+            onChange={handleChange}
             required
           />
         </Box>
@@ -61,6 +79,8 @@ export default function FormulaireContact() {
             name="email"
             type="email"
             variant="outlined"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
         </Box>
@@ -71,6 +91,8 @@ export default function FormulaireContact() {
             name="phone"
             type="tel"
             variant="outlined"
+            value={formData.phone}
+            onChange={handleChange}
             required
           />
         </Box>
@@ -82,16 +104,16 @@ export default function FormulaireContact() {
             multiline
             rows={4}
             variant="outlined"
-            value={message}
-            onChange={handleMessageChange}
+            value={formData.message}
+            onChange={handleChange}
             required
           />
           <Typography
             variant="body2"
             align="right"
-            sx={{ color: message.length === maxCharacters ? "red" : "gray" }}
+            sx={{ color: formData.message.length === maxCharacters ? "red" : "gray" }}
           >
-            {message.length}/{maxCharacters} caractères
+            {formData.message.length}/{maxCharacters} caractères
           </Typography>
         </Box>
         <Box textAlign="center">

@@ -21,15 +21,7 @@ export default function Taf() {
         <Typography variant="h5" gutterBottom sx={{ textAlign: "center" }}>
           Affichage des offres d'emplois disponibles
         </Typography>
-        {/* Zone vide en dessous */}
-        <Box 
-          sx={{ 
-            height: "200px", 
-            backgroundColor: "#f0f0f0", 
-            border: "1px solid #ddd" , 
-            borderRadius: "15px"
-            }}
-        />
+        
 
         <Box
           sx={{

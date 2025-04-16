@@ -8,7 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', password: '' });
   const [status, setStatus] = useState({ error: '', success: false });
 
   const handleChange = (e) => {
@@ -17,9 +17,9 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const { email, password } = formData;
+    const { username, password } = formData;
 
-    if (email === 'admin@admin.com' && password === 'admin') {
+    if (username === 'admin' && password === 'admin') {
       setStatus({ error: '', success: true });
       login();
       setTimeout(() => navigate('/admin'), 1500);
@@ -70,11 +70,14 @@ function Login() {
       <Box
         sx={{
           width: '100%',
-          maxWidth: '400px',
+          maxWidth: { xs: '90%', sm: '400px' }, // Largeur maximale : 90% sur petits écrans, 400px sur écrans moyens et plus
           backgroundColor: 'white',
-          padding: '2rem',
+          padding: { xs: '1.5rem', sm: '2rem' }, // Padding réduit sur petits écrans
           borderRadius: '8px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
         }}
       >
         <Typography variant="h5" component="h1" gutterBottom align="center">
@@ -82,10 +85,10 @@ function Login() {
         </Typography>
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <TextField
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
+            label="Identifiant"
+            name="username"
+            type="username"
+            value={formData.username}
             onChange={handleChange}
             fullWidth
             required
