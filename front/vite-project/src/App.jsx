@@ -1,7 +1,6 @@
 //Browser router
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 import React, { use } from 'react';
 
@@ -19,12 +18,7 @@ import Taf from './pages/taf';
 import TelechargerUnDocument from './pages/telechargerUnDocument';
 import VieQuotidienne from './pages/vieQuotidienne';
 import Home from './pages/home';
-import GestionContenu from './pages/gestiondeContenu';
-import Login from './pages/login.jsx';
 
-// Auth
-import { AuthProvider } from './auth/AuthContext';
-import PrivateRoute from './auth/PrivateRoute';
 
 
 
@@ -51,15 +45,6 @@ function App() {
           <Route path='/presentation' element={<Presentation />} />
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />
           <Route path='/admission' element={<Admission />} />
-
-          {/* Route protégée */}
-          <Route path='/admin' element={
-            <PrivateRoute>
-              <GestionContenu />
-            </PrivateRoute>
-          } />
-
-          <Route path='/login' element={<Login />} />
           <Route path="/" element={<Navigate to="/accueil" />} />
         </Routes>
       </Router>
