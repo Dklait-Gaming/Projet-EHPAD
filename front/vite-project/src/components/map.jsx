@@ -2,7 +2,7 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 // Pour l'intégration de la carte interactive
 export default function Map() {

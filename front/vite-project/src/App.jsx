@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 //Importations de toutes mes pages
 import AccueilDeJour from './pages/accueilDeJour';
 import Admission from './pages/admission';
-import Contact from './pages/contact';
+import NousContacter from './pages/nousContacter';
 import Ehpad from './pages/ehpad';
 import FoyerRestaurant from './pages/foyerRestaurant';
 import CRT from './pages/crt';
@@ -36,7 +36,7 @@ function App() {
           <Route path='/crt' element={<CRT/>} />
           <Route path='/telecharger-document' element={<TelechargerUnDocument />} />
           <Route path='/rejoignez-nous' element={<Taf />} />
-          <Route path='/nous-contacter' element={<Contact />} />
+          <Route path='/nous-contacter' element={<NousContacter />} />
           <Route path='/mentions-legales' element={<MentionsLegales />} />
           <Route path='/presentation' element={<Presentation />} />
           <Route path='/vie-quotidienne' element={<VieQuotidienne />} />

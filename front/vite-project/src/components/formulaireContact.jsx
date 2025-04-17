@@ -1,12 +1,8 @@
-import React from "react";
-import { Container, TextField, Button, Box, Typography } from "@mui/material";
-import { useLocalStorage } from "../hooks/useLocalStorage"; // Import du hook personnalisé
+import { Box, Button, Card, Stack, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function FormulaireContact() {
-  const maxCharacters = 500; // Limite de caractères
-
-  // Utilisation de useLocalStorage pour sauvegarder les données
-  const [formData, setFormData] = useLocalStorage("formulaireContact", {
+  const [formData, setFormData] = useState({
     name: "",
     prenom: "",
     email: "",
@@ -16,16 +12,17 @@ export default function FormulaireContact() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "message" && value.length > maxCharacters) return; // Limite de caractères pour le message
-    setFormData({ ...formData, [name]: value }); // Met à jour les données dans le localStorage
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Empêche le rechargement de la page
-    console.log("Données envoyées :", formData);
-    alert("Votre message a été envoyé avec succès !");
-
-    // Réinitialise le formulaire après soumission
+    event.preventDefault();
+    console.log("Données soumises :", formData);
+    localStorage.setItem("formData", JSON.stringify(formData));
+    alert("Formulaire soumis !");
     setFormData({
       name: "",
       prenom: "",
@@ -36,92 +33,95 @@ export default function FormulaireContact() {
   };
 
   return (
-    <Container
-      maxWidth="sm"
+    <Box
       sx={{
-        margin: "0 auto",
-        padding: "20px",
         display: "flex",
-        flexDirection: "column",
-        gap: 2,
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "#f0f2f5",
+        px: 2,
       }}
     >
-      <Typography variant="h5" align="center" gutterBottom>
-        Formulaire de Contact
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Nom"
-            name="name"
-            variant="outlined"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </Box>
-        <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Prénom"
-            name="prenom"
-            variant="outlined"
-            value={formData.prenom}
-            onChange={handleChange}
-            required
-          />
-        </Box>
-        <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Email"
-            name="email"
-            type="email"
-            variant="outlined"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </Box>
-        <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Téléphone"
-            name="phone"
-            type="tel"
-            variant="outlined"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </Box>
-        <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Message"
-            name="message"
-            multiline
-            rows={4}
-            variant="outlined"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-          <Typography
-            variant="body2"
-            align="right"
-            sx={{ color: formData.message.length === maxCharacters ? "red" : "gray" }}
-          >
-            {formData.message.length}/{maxCharacters} caractères
+      <Card
+        sx={{
+          maxHeight: "150vh",
+          maxWidth: 500,
+          p: 4,
+          borderRadius: 3,
+          boxShadow: 3,
+          backgroundColor: "#fff",
+        }}
+      >
+        <Stack spacing={3}>
+          <Typography variant="body1" align="center">
+            Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.
           </Typography>
-        </Box>
-        <Box textAlign="center">
-          <Button variant="contained" color="primary" type="submit">
-            Envoyer
-          </Button>
-        </Box>
-      </form>
-    </Container>
+
+          <Box component="form" onSubmit={handleSubmit}>
+            <Stack spacing={2}>
+              <TextField
+                fullWidth
+                label="Nom"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                variant="outlined"
+                required
+              />
+              <TextField
+                fullWidth
+                label="Prénom"
+                name="prenom"
+                value={formData.prenom}
+                onChange={handleChange}
+                variant="outlined"
+                required
+              />
+              <TextField
+                fullWidth
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                variant="outlined"
+                required
+              />
+              <TextField
+                fullWidth
+                label="Téléphone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                variant="outlined"
+                required
+              />
+              <TextField
+                fullWidth
+                label="Message"
+                name="message"
+                multiline
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                variant="outlined"
+                required
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 1.5, py: 1.5, fontSize: "1rem", fontWeight: 600 }}
+              >
+                Envoyer
+              </Button>
+            </Stack>
+          </Box>
+        </Stack>
+      </Card>
+    </Box>
   );
 }
