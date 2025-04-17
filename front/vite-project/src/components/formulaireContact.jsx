@@ -1,4 +1,4 @@
-import { Box, Button, Card, Stack, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Card, Snackbar, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 export default function FormulaireContact() {
@@ -9,6 +9,8 @@ export default function FormulaireContact() {
     phone: "",
     message: "",
   });
+
+  const [alertOpen, setAlertOpen] = useState(false); // État pour contrôler l'affichage de l'alerte
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,8 +23,14 @@ export default function FormulaireContact() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Données soumises :", formData);
+
+    // Stocker les données dans localStorage
     localStorage.setItem("formData", JSON.stringify(formData));
-    alert("Formulaire soumis !");
+
+    // Afficher l'alerte
+    setAlertOpen(true);
+
+    // Réinitialiser le formulaire
     setFormData({
       name: "",
       prenom: "",
@@ -32,22 +40,28 @@ export default function FormulaireContact() {
     });
   };
 
+  const handleAlertClose = () => {
+    setAlertOpen(false); // Fermer l'alerte
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 128px)", // Ajuste la hauteur pour laisser de l'espace pour le header et le footer
+        padding: "64px 16px", // Ajoute un padding pour le contenu
+        paddingTop: "114px", // Compense la hauteur combinée des deux barres de navigation
         backgroundColor: "#f0f2f5",
-        px: 2,
       }}
     >
       <Card
         sx={{
-          maxHeight: "150vh",
-          maxWidth: 500,
-          p: 4,
+          width: "100%",
+          maxWidth: 400,
+          maxHeight: "700px",
+          padding: 4,
           borderRadius: 3,
           boxShadow: 3,
           backgroundColor: "#fff",
@@ -102,12 +116,20 @@ export default function FormulaireContact() {
                 fullWidth
                 label="Message"
                 name="message"
+                //redimensionner le champ de texte vers le bas
+                sx={{ resize: "vertical" }}             
                 multiline
-                rows={4}
                 value={formData.message}
-                onChange={handleChange}
+                onChange={(e) => {
+                  if (e.target.value.length <= 500) {
+                    handleChange(e);
+                  }
+                }}
                 variant="outlined"
                 required
+                inputProps={{ maxLength: 500 }} // Limite le nombre de caractères à 500
+                minRows={3} // Nombre minimum de lignes visibles
+                helperText={`${formData.message.length}/500 caractères`} // Affiche le nombre de caractères restants
               />
               <Button
                 type="submit"
@@ -122,6 +144,18 @@ export default function FormulaireContact() {
           </Box>
         </Stack>
       </Card>
+
+      {/* Snackbar avec Alert */}
+      <Snackbar
+        open={alertOpen}
+        autoHideDuration={4000} // L'alerte disparaît après 4 secondes (modifiable)
+        onClose={handleAlertClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert onClose={handleAlertClose} severity="success" sx={{ width: "100%" }}>
+          Votre message a été envoyé avec succès !
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

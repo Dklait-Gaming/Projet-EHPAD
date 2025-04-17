@@ -7,13 +7,15 @@ export default function Footer() {
     backgroundColor: "#ededed",
     textAlign: "center",
     padding: "10px 0",
-    position: "absolute", // Le footer est positionné en bas de la page
-    width: "100%", // Prend toute la largeur de la fenêtre
+    position: "relative", // Change absolute to relative for better responsiveness
+    width: "100%",
+    zIndex: 10,
   };
 
   const iconStyle = {
     margin: "0 10px",
     color: "#333",
+    transition: "transform 0.3s ease, color 0.3s ease",
   };
 
   const logos = [
@@ -30,33 +32,85 @@ export default function Footer() {
 
   return (
     <Box component="footer" sx={footerStyle}>
-      <Box display="flex" justifyContent="center" alignItems="center" gap={2} mb={1} flexWrap="wrap">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        gap={2}
+        mb={1}
+        flexWrap="wrap"
+      >
+        {/* Logos avec animation */}
         {logos.map((logo, index) => (
           <img
             key={index}
             src={logo.src}
             alt={logo.alt}
-            style={{ height: 80, width: 120, margin: "0 10px", borderRadius: 10 }}
+            style={{
+              height: 80,
+              width: 120,
+              margin: "0 10px",
+              borderRadius: 10,
+              transition: "transform 0.3s ease, opacity 0.3s ease",
+              cursor: "pointer",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.opacity = "0.8";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.opacity = "1";
+            }}
           />
         ))}
 
+        {/* Liens textuels avec effet */}
         <MuiLink
-          href="/mentions-legales"
-          sx={{
-            color: "black",
-            textDecoration: "none",
-            fontSize: "large",
-          }}
-          
-        >
+  href="/mentions-legales"
+  sx={{
+    position: "relative",
+    color: "black",
+    fontSize: "large",
+    textDecoration: "none",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      width: "0%",
+      height: "2px",
+      bottom: 0,
+      left: 0,
+      backgroundColor: "black",
+      transition: "width 0.35s ease-in-out",
+    },
+    "&:hover::after": {
+      width: "100%",
+    },
+    "&:hover": {
+      color: "black",
+    },
+  }}
+>
           Mentions légales
         </MuiLink>
 
+        {/* Icônes réseaux sociaux avec zoom */}
         {iconLinks.map((item, index) => (
           <MuiLink
             key={index}
             href={item.href}
             underline="none"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              transition: "transform 0.3s ease",
+              "&:hover": {
+                transform: "scale(1.2)",
+                color: "#1976d2",
+              },
+            }}
           >
             {React.cloneElement(item.icon, {
               size: 30,
@@ -68,11 +122,27 @@ export default function Footer() {
         <MuiLink
           href="/nous-contacter"
           sx={{
+            position: "relative",
             color: "black",
-            textDecoration: "none",
             fontSize: "large",
+            textDecoration: "none",
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              width: "0%",
+              height: "2px",
+              bottom: 0,
+              left: 0,
+              backgroundColor: "black",
+              transition: "width 0.35s ease-in-out",
+            },
+            "&:hover::after": {
+              width: "100%",
+            },
+            "&:hover": {
+              color: "black",
+            },
           }}
-          
         >
           Nous contacter
         </MuiLink>
