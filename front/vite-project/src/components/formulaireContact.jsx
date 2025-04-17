@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function FormulaireContact() {
   const [formData, setFormData] = useState({
     name: "",
-    prenom: "",
     email: "",
     phone: "",
     message: "",
@@ -33,7 +32,6 @@ export default function FormulaireContact() {
     // Réinitialiser le formulaire
     setFormData({
       name: "",
-      prenom: "",
       email: "",
       phone: "",
       message: "",
@@ -76,18 +74,9 @@ export default function FormulaireContact() {
             <Stack spacing={2}>
               <TextField
                 fullWidth
-                label="Nom"
+                label="Nom et prénom"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
-                variant="outlined"
-                required
-              />
-              <TextField
-                fullWidth
-                label="Prénom"
-                name="prenom"
-                value={formData.prenom}
                 onChange={handleChange}
                 variant="outlined"
                 required
